@@ -1,0 +1,49 @@
+# OASIS_START
+# DO NOT EDIT (digest: 151d1d3a0c058038ad11a6080b5a7e86)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library nes
+"src/lib/nes.cmxs": use_nes
+"src/lib/integer.cmx": for-pack(Nes)
+"src/lib/global.cmx": for-pack(Nes)
+"src/lib/instructions.cmx": for-pack(Nes)
+"src/lib/cartridge.cmx": for-pack(Nes)
+"src/lib/mapper.cmx": for-pack(Nes)
+"src/lib/mem.cmx": for-pack(Nes)
+"src/lib/ppu.cmx": for-pack(Nes)
+"src/lib/cpu.cmx": for-pack(Nes)
+<src/lib/nes.{cma,cmxa}>: oasis_library_nes_byte
+<src/lib/*.ml{,i,y}>: oasis_library_nes_byte
+<src/lib/*.ml{,i,y}>: package(core_kernel)
+<src/lib/*.ml{,i,y}>: package(cstruct)
+<src/lib/*.ml{,i,y}>: package(cstruct.ppx)
+<src/lib/*.ml{,i,y}>: package(ppx_deriving.enum)
+# Executable nes_test
+<src/tests/nes_test.{native,byte}>: oasis_executable_nes_test_byte
+<src/tests/*.ml{,i,y}>: oasis_executable_nes_test_byte
+<src/tests/nes_test.{native,byte}>: package(cmdliner)
+<src/tests/nes_test.{native,byte}>: package(core_kernel)
+<src/tests/nes_test.{native,byte}>: package(cstruct)
+<src/tests/nes_test.{native,byte}>: package(cstruct.ppx)
+<src/tests/nes_test.{native,byte}>: package(ppx_deriving.enum)
+<src/tests/nes_test.{native,byte}>: use_nes
+<src/tests/*.ml{,i,y}>: package(cmdliner)
+<src/tests/*.ml{,i,y}>: package(core_kernel)
+<src/tests/*.ml{,i,y}>: package(cstruct)
+<src/tests/*.ml{,i,y}>: package(cstruct.ppx)
+<src/tests/*.ml{,i,y}>: package(ppx_deriving.enum)
+<src/tests/*.ml{,i,y}>: use_nes
+<src/tests/nes_test.{native,byte}>: custom
+# OASIS_STOP

@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 3671a67330e7ae03c4ae3b064d08dbe3)
+version = "0.1"
+description = "Nes emulator"
+requires = "core_kernel cstruct cstruct.ppx ppx_deriving.enum"
+archive(byte) = "nes.cma"
+archive(byte, plugin) = "nes.cma"
+archive(native) = "nes.cmxa"
+archive(native, plugin) = "nes.cmxs"
+exists_if = "nes.cma"
+# OASIS_STOP
+

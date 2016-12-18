@@ -1,0 +1,27 @@
+OASISFormat: 0.4
+Name:        nesemu
+Version:     0.1
+Synopsis:    Nes emulator
+Authors:     Jiten K. Pathy
+Maintainers: Jiten K. Pathy (jpathy@fssrv.net)
+
+License:     MIT
+Plugins:     META (0.4)
+BuildTools:  ocamlbuild
+
+Library nes
+  Path:                   src/lib/
+  ByteOpt:                -g
+  Pack:                   true
+  BuildDepends:           core_kernel, cstruct, cstruct.ppx, ppx_deriving.enum
+  Modules:                Integer, Global, Instructions, Cartridge, Mapper, Mem, Ppu, Cpu
+
+Executable nes_test
+  Path:            src/tests/
+  ByteOpt:         -g
+  MainIs:          nes_test.ml
+  Build$:          flag(tests)
+  Custom:          true
+  CompiledObject:  best
+  Install:         false
+  BuildDepends:    nes, core_kernel, cmdliner
